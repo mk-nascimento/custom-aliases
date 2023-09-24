@@ -17,14 +17,14 @@ Abaixo está a lista de todos os comandos disponíveis e suas explicações:
 > Para executar o script diretamente do URL usando `curl`, você pode usar o seguinte comando:
 
 > ```shell
-> sh -c "$(curl -fsSL https://raw.githubusercontent.com/mk-nascimento/custom-aliases/main/install.sh)"
+> bash -c "$(curl -fsSL https://raw.githubusercontent.com/mk-nascimento/custom-aliases/main/install.sh)"
 > ```
     
 ## Opção 2: Usando wget
 >Se preferir usar o wget, você pode usar o seguinte comando:
 
 > ```shell
-> sh -c "$(wget -qO- https://raw.githubusercontent.com/github_user/github_repo/main/script.sh)"
+> bash -c "$(wget -qO- https://raw.githubusercontent.com/github_user/github_repo/main/script.sh)"
 > ```
 
 
