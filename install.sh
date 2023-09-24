@@ -41,7 +41,7 @@ custom-aliases_install() {
 
     # Create a symbolic link for loading custom aliases
     if [ -n "$ZSH" ]; then
-        ln -s "$load_path" "$ZSH_CUSTOM/load_custom.zsh"
+        ln -sf "$load_path" "$ZSH/custom/load_custom.zsh"
         rm -rf "$home/.custom-aliases" &>/dev/null
     else
         echo ". $load_path" >>"$home/.bashrc"
