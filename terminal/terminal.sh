@@ -8,7 +8,10 @@
 ZSH_CONFIG="$HOME/.zshrc"
 
 # Show the contents of the custom aliases folder.
-alias custom_aliases='cd "$CUSTOM_ALIASES" && lsa;'
+alias custom_aliases='cd "$CUSTOM_ALIASES" && ls;'
+
+# Updates custom-aliases
+alias custom_refresh='bash -c "$CUSTOM_ALIASES/install.sh"'
 
 # Change the default terminal emulator.
 alias change_terminal='sudo update-alternatives --config x-terminal-emulator'
@@ -22,21 +25,21 @@ alias hc='history -c'
 # Clear the shell history and the current terminal.
 alias hcc='hc; clear'
 
-# Clears the shell history and exits the terminal.
-alias hx='hcc; exit'
+# Exits the terminal.
+alias tx='exit'
 
 # Shortcut for recursively removing directories.
 alias rmvdir='rm -rf'
 
 # Displays the file with repeated logs on the Desktop using 'journalctl'.
-alias jlog='sudo journalctl -f > $HOME/Desktop/'
+alias jlog='sudo journalctl -f > $HOME/Desktop/journal.log'
 
 # Reloads the terminal session by restarting the current shell.
 reload() {
     local current_shell
     current_shell=$(basename "$SHELL")
 
-    echo  "Current shell: $current_shell"
+    echo "Current shell: $current_shell"
     exec "$current_shell" || return 1
 }
 
@@ -53,7 +56,7 @@ upd() {
 # Lists the contents of the current directory using 'exa' if available, or falls back to regular 'ls'.
 alias ls='_new_ls'
 _new_ls() {
-    if command -v exa &>/dev/null; then command exa "$@"; else ls "$@"; fi
+    if command -v exa &>/dev/null; then command exa "$@"; else command ls "$@"; fi
 }
 
 # Cleans the package cache using 'apt' and 'nala' (if it exists).
@@ -68,14 +71,15 @@ cleanup() {
 
 # Removes a Git branch locally and from the remote repository (if provided).
 git_remove_branch() {
-    if [ -n "$1" ]; then
-        git branch -D "$1" && git push origin --delete "$1" || {
-            echo -e "Failed to delete branch: $1\n"
-            return 1
-        }
-    else
+    if [ -z "$1" ]; then
         echo -e "git: unrecognized branch name\n" && return 1
     fi
+
+    git branch -D "$1" &>/dev/null
+    git push origin --delete "$1" || {
+        echo -e "Failed to delete branch: $1\n"
+        return 1
+    }
 }
 
 # Clear the terminal after a 10-second delay.
