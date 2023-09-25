@@ -46,6 +46,8 @@ custom-aliases_install() {
     else
         echo ". $load_path" >>"$home/.bashrc"
     fi
+
+    chmod +x "$custom_aliases/install.sh" &>/dev/null
 }
 
 custom-aliases_install
