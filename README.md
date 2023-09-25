@@ -27,19 +27,25 @@ Abaixo está a lista de todos os comandos disponíveis e suas explicações:
 > bash -c "$(wget -qO- https://raw.githubusercontent.com/github_user/github_repo/main/script.sh)"
 > ```
 
+Depois que o script for executado, convém abrir uma nova instância do terminal ou recarregar o terminal atual para garantir que as alterações sejam aplicadas.
+ex:
+```shell
+    exec zsh
+    # or
+    exec bash
+```
+
 
 ## Comandos
 
+- **custom_refresh**
+    - Descrição atualiza o 'custom-aliases'
+    - Uso: `custom_refresh`
 
 - **custom_aliases**
 
    - Descrição: Mostra o conteúdo da pasta de aliases personalizados.
    - Uso: `custom_aliases`
-
-- **change_terminal**
-
-   - Descrição: Altera o emulador de terminal padrão.
-   - Uso: `change_terminal`
 
 - **change_terminal**
 
@@ -56,10 +62,10 @@ Abaixo está a lista de todos os comandos disponíveis e suas explicações:
    - Descrição: Limpa o histórico do shell e a tela atual.
    - Uso: `hcc`
 
-- **hx**
+- **tx**
 
-   - Descrição: Limpa o histórico do shell e sai do terminal.
-   - Uso: `hx`
+   - Descrição: Sai do terminal.
+   - Uso: `tx`
 
 - **rmvdir**
 
