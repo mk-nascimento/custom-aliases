@@ -14,7 +14,7 @@ fi
 # Check if the custom-aliases folder already exists at the desired location
 custom-aliases_install() {
     # URL of the custom-aliases repository on GitHub
-    local repo_url="git@github.com:mk-nascimento/custom-aliases.git"
+    local repo_url="https://github.com/mk-nascimento/custom-aliases.git"
 
     # Path to the user's home directory
     local home="/home/$USER"
@@ -33,7 +33,7 @@ custom-aliases_install() {
     else
         # Folder doesn't exist, cloning the repository...
         echo -e "custom-aliases not installed. Cloning the repository...\n"
-        git clone "$repo_url" "$custom_aliases" || {
+        git clone --single-branch -b main --depth 1 "$repo_url" "$custom_aliases" || {
             echo -e "Error: Failed to change directory to '$custom_aliases'\n"
             return 1
         }
